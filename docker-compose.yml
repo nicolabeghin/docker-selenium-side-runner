@@ -2,18 +2,17 @@ version: '3'
 
 services:
   chromedriver:
-    image: robcherry/docker-chromedriver
-    privileged: true
-    restart: always
-    environment:
-      - CHROMEDRIVER_WHITELISTED_IPS=''
-    # ports:
-    #   - '4444:4444'
+    image: selenium/standalone-chrome-debug:3.141.59-zirconium
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - '4444:4444'
+      - '5900:5900'
 
   selenium-side-runner:
-    image: nixel2007/docker-selenium-side-runner
-    # build:
-    #   context: .
+    build: .
+    depends_on: 
+     - chromedriver
     volumes:
       - './sides:/sides'
       - './out:/root/out'
