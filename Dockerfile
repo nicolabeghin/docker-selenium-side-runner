@@ -1,6 +1,6 @@
 FROM node:10-alpine
 
-LABEL Author="Nikita Gryzlov <nixel2007@gmail.com>"
+LABEL Author="Nicola Beghin <nicolabeghin@gmail.com>"
 
 RUN npm install -g selenium-side-runner
 
